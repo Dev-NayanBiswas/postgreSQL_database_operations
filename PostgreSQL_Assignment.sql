@@ -132,7 +132,19 @@ select r.name, count(s.sighting_id) as total_sightings
   ORDER BY s.sighting_time DESC LIMIT 2; 
 
 
+--* Problem 7
+UPDATE species SET conservation_status = 'Historic' 
+where discovery_date < '1800-01-01';
 
+-- * Problem 8
+SELECT sighting_id,
+  CASE 
+    WHEN extract(HOUR from sighting_time) < 12 then 'Morning' 
+    WHEN  extract(HOUR FROM sighting_time) between 12 and 17 then 'Afternoon' 
+    ELSE  'Evening'
+  END AS time_of_day
+FROM sightings
+ORDER BY sighting_id;
 
 
 
