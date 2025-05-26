@@ -146,7 +146,11 @@ SELECT sighting_id,
 FROM sightings
 ORDER BY sighting_id;
 
-
+--* Problem 9
+DELETE from rangers 
+  WHERE ranger_id NOT IN (
+    select DISTINCT ranger_id from sightings
+  );
 
 
 select * from rangers;
